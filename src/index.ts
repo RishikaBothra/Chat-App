@@ -18,4 +18,9 @@ wss.on("connection",(socket) =>{
             allSockets[i].send(message.toString() + " from user: " + userCount);
         }
     })
+    socket.on("disconnect",() =>{
+        allSockets = allSockets.filter(x=>x!=socket);
+        userCount--;
+        console.log("user count:", userCount);
+    })
 })
